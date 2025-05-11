@@ -1,0 +1,61 @@
+.flex {
+    display: flex;
+    gap: 5px;
+}
+
+.form-floating>.form-control,
+.form-floating>.form-select {
+    font-size: 14px;
+    height: calc(3.5rem + 3px);
+}
+
+.btn {
+    color: #fff;
+    background: #760202;
+    padding: 1px 7px;
+    transition: .5s;
+    margin: 3px 5px !important;
+}
+
+.loading {
+    width: 35px;
+    background: #000000;
+}
+
+table th,
+table td {
+    padding: 5px 8px;
+}
+
+table tbody button {
+    padding: 4px 5px;
+    font-size: 10px;
+    margin: 0 3px !important;
+    line-height: 0;
+}
+
+.group {
+    background: #0a0a16;
+    font-size: 13px;
+}
+
+.photo:hover {
+   border: 2px solid red;
+   padding-bottom:3px ;   
+}
+.photo {
+  margin: 5px;
+    border: 1px solid #dcdcdc;
+    width: 145px;
+    height: 145px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.productName {
+    background: #ebebeb;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #795548;
+    width: 100%;
+}

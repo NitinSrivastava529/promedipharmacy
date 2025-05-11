@@ -1,0 +1,191 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-4">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Add New Product</h6>
+                <form #form="ngForm">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="type" #category="ngModel" [(ngModel)]="product.category"
+                            required aria-label="Floating label select example">
+                            <option value="0" selected="">Select Category</option>
+                            @for (item of categoryList; track $index) {
+                            <option [attr.category_id]="item.categoryId" [value]="item.categoryName">
+                                {{item.categoryName}}
+                            </option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Category</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" #brandName="ngModel" class="form-control" name="brandName"
+                            [(ngModel)]="product.brandName" placeholder="Brand Name" required minlength="3" />
+                        <label for="floatingInput">Brand Name</label>
+                        <div class="text-danger">
+                            <span
+                                *ngIf="((brandName.touched || brandName.dirty)&& brandName.errors?.['required'])">brand
+                                name required.</span>
+                            <span
+                                *ngIf="((brandName.touched || brandName.dirty) && brandName.errors?.['minlength'])">min
+                                3 char required.</span>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" #productName="ngModel" class="form-control" name="productName"
+                            [(ngModel)]="product.productName" placeholder="Product Name" required minlength="3" />
+                        <label for="floatingInput">Product Name</label>
+                        <div class="text-danger">
+                            <span
+                                *ngIf="((productName.touched || productName.dirty)&& productName.errors?.['required'])">pruduct
+                                name required.</span>
+                            <span
+                                *ngIf="((productName.touched || productName.dirty) && productName.errors?.['minlength'])">min
+                                3 char required.</span>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="form-floating mb-3">
+                            <input type="text" #mg="ngModel" class="form-control" name="mg" [(ngModel)]="product.mg"
+                                placeholder="0" required minlength="2" />
+                            <label for="floatingInput">Mg</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" name="qty" #qty="ngModel" [(ngModel)]="product.qty"
+                                maxlength="3" minlength="1" required placeholder="Qty">
+                            <label for="floatingPassword">Qty</label>
+                            <div class="text-danger">
+                                <span *ngIf="((qty.touched || qty.dirty)&& qty.errors?.['required'])">Qty is
+                                    Required.</span>
+                                <span *ngIf="((qty.touched || qty.dirty) && qty.errors?.['minlength'])">Min
+                                    1 digit required.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" name="city" [(ngModel)]="product.price" required
+                                placeholder="Price" />
+                            <label for="Price">Price</label>
+                        </div>
+                        <div class="form-floating mb-3 flex">
+                            <input type="number" class="form-control" name="pinCode" #discount="ngModel"
+                                [(ngModel)]="product.discount" maxlength="3" minlength="1" required
+                                placeholder="Discount">
+                            <label>Discount</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="description" #description="ngModel"
+                            [(ngModel)]="product.description" required placeholder="Description"></textarea>
+                        <label for="floatingTextarea">Description</label>
+                        <div class="text-danger">
+                            <span
+                                *ngIf="((description.touched || description.dirty)&& description.errors?.['required'])">Description
+                                is
+                                Required.</span>
+                        </div>
+                    </div>
+                    <!-- <div class="form-floating mb-3">
+                        <select class="form-select" name="state" #state="ngModel" [(ngModel)]="store.state" required
+                            aria-label="Floating label select example">
+                            <option value="Select State">Select State</option>
+                            @for (item of stateList; track $index) {
+                            <option [attr.state_code]="item.state_code" [value]="item.state_name">{{item.state_name}}
+                            </option>
+                            }
+                        </select>
+                        <div class="text-danger">
+                            <span *ngIf="((state.touched || state.dirty) && state.errors?.['required'])">State is
+                                Required.</span>
+                        </div>
+                        <label for="floatingSelect"> Select State</label>
+                    </div> -->
+                    <div class="form-floating mb-3 flex">
+                        <button *ngIf="!isLoading" (click)="AddProduct()" class="btn btn-primary btn-sm"
+                            [disabled]="form.invalid"
+                            style="margin-left: 5px;">{{(product.productId!='')?'Update':'Submit'}}</button>
+                        <img *ngIf="isLoading" class="loading" src="./loading.gif" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-sm-12 col-xl-8">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="mb-3">
+                    <div class="table-responsive" style="max-height: 560px;">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Pruduct Name</th>
+                                    <th scope="col">Mg</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Disc.</th>
+                                    <th scope="col">Brand Name</th>
+                                    <th scope="col">CMD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let val of productList;let i=index">
+                                    <ng-container *ngIf="checkGroup(val.category)">
+                                        <tr class="group">
+                                            <th colspan="8">Category : {{val.category}}</th>
+                                        </tr>
+                                    </ng-container>
+                                    <tr>
+                                        <td>{{i+1}}</td>
+                                        <td>{{val.productName}}</td>
+                                        <td>{{val.mg}}</td>
+                                        <td>{{val.qty}}</td>
+                                        <td>{{val.price}}</td>
+                                        <td>{{val.discount}}</td>
+                                        <td>{{val.brandName}}</td>
+                                        <td>
+                                            <button (click)="DeleteProduct(val.productId)"
+                                                class="btn btn-danger btn-sm m-2"><i class="fa fa-trash"></i></button>
+                                            <button onclick="$('#modalUpload').modal('show');"
+                                                (click)="productInfo(val.productId)"
+                                                class="btn btn-warning btn-sm m-2"><i class="fa fa-upload"></i></button>
+                                            <button (click)="Edit(val.productId)" class="btn btn-warning btn-sm m-2"><i
+                                                    class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalUpload" *ngIf="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-sm-12 col-xl-12">
+                    <label>Upload Product Photo</label><br>
+                     <div class="input-group mb-3">                    
+                    <label class="productName"><b>Id : </b>{{productForUpload.productId}}, <b>Name : </b>{{productForUpload.productName}}</label>
+                    </div>
+                    <!-- <p>{{productForUpload|json}}</p> -->
+                    <div class="input-group mb-3">
+                        <input name="fileUpload" (change)="changeFile($event)" class="form-control bg-dark" type="file"
+                            id="category_banner" accept=".jpeg,.png,.jpg,.pdf" />
+                        <button *ngIf="!isLoading2" (click)="upload()" class="btn btn-primary">Upload</button>
+                        <img *ngIf="isLoading2" class="loading" src="./loading.gif" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-12">                    
+                    <label *ngIf="productPhoto!=null" style="font-size: 11px;" class="text-danger">Note : double click on photo to delete.</label><br>
+                    <ng-container *ngFor="let item of productPhoto;">
+                        <img (dblclick)="DeletePhoto(item.autoId)" [src]="getImgUrl(item.photo)" class="photo"/>
+                    </ng-container>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
