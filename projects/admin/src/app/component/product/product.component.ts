@@ -9,7 +9,7 @@ import { constant } from '../../model/constent';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule, FormsModule,JsonPipe],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

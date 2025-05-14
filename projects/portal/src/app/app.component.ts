@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./shared/header/header.component";
 import { FooterComponent } from "./shared/footer/footer.component";
@@ -10,12 +10,15 @@ import { GlobalService } from './services/global.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'portal';
 
   _global=inject(GlobalService)
 
   constructor(){
-    this._global.loadScript()
+  // this._global.loadScript()
+  }
+  ngOnInit(): void {
+    
   }
 }

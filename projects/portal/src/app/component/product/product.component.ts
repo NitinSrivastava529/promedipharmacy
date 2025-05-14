@@ -14,6 +14,7 @@ import { CONSTANT } from '../../models/constant';
 })
 export class ProductComponent implements OnInit {
   productQuickView: any;
+  products: any;
   productList: any;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
@@ -22,16 +23,24 @@ export class ProductComponent implements OnInit {
     this._global.loadScript();
     this.GetProduct();
   }
-    getImgUrl(file: string) {
-      return CONSTANT.API_URL+'Resource/Product/' + file;
-     // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
-    }
-    QuickView(productId:string){
-      var val=this.productList.filter((i:any)=>i.productId==productId)      
-      this.productQuickView=val[0];
-    }
+  getImgUrl(file: string) {
+    return CONSTANT.API_URL + 'Resource/Product/' + file;
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
+  }
+  QuickView(productId: string) {
+    var val = this.productList.filter((i: any) => i.productId == productId)
+    this.productQuickView = val[0];
+  }
+  filter(name: string) {
+    console.log(name)
+    if (name.length == 0)
+      this.productList = this.products;
+    else
+      this.productList = this.products.filter((i: any) => i.productName.includes(name));
+  }
   GetProduct() {
     this._http.get(CONSTANT.API_URL + 'api/Product/GetProduct').subscribe((res: any) => {
+      this.products = res;
       this.productList = res;
     })
   }

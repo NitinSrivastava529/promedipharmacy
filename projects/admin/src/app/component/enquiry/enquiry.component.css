@@ -1,0 +1,17 @@
+.btn {
+    color: #fff;
+    background: #760202;
+    padding: 1px 7px;
+    transition: .5s;
+    margin: 3px 5px !important;
+}
+
+.loading {
+    width: 35px;
+    background: #000000;
+}
+
+table th,
+table td {
+    padding: 5px 8px;
+}

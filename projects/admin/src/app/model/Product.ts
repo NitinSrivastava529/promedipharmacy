@@ -8,6 +8,7 @@ export class Product {
     price: Number;
     discount: Number;
     description: String;
+    photo:[];
     constructor() {
         this.category = "0";
         this.brandName = "";
@@ -18,5 +19,6 @@ export class Product {
         this.price = 0;
         this.discount = 0;
         this.description ="";
+        this.photo =[];
     }
 }

@@ -7,5 +7,6 @@ export interface IProduct {
     qty: Number,
     price: Number,
     discount: Number,
-    description: String
+    description: String,
+    photo:[]
 }

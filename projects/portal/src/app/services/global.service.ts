@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CONSTANT } from '../models/constant';
+import { Product } from '../../../../admin/src/app/model/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,7 @@ export class GlobalService {
       'assets/js/jquery-ui.min.js',
       'assets/js/jquery.nice-select.min.js',
       'assets/js/countdown.min.js',
+      'assets/js/flex-slider.js',
       'assets/js/wow.min.js',
       'assets/js/main.js'
     ];
@@ -60,6 +62,32 @@ export class GlobalService {
       node.async = false;
       document.getElementsByTagName('head')[0].appendChild(node);
     }
+  }
+  checkCart(productId: string) {
+    if (!localStorage.hasOwnProperty('cart'))
+      return
+
+    const cart = Array.from(JSON.parse(localStorage.getItem('cart') ?? ''));
+    if (cart.some((i: any) => i.productId == productId))
+      return true
+    else
+      return false
+  }
+  addToCart(product: Product) {
+     let cart:Product[]=[];
+
+    if (localStorage.hasOwnProperty('cart')) {
+      cart = Array.from(JSON.parse(localStorage.getItem('cart') || ''));
+      if (cart.some((i: any) => i.productId == product.productId)) {
+        alert('already added')
+        return
+      }
+    }
+    // if (!localStorage.hasOwnProperty('cart'))  
+
+
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 }
 

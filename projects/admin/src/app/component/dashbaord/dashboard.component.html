@@ -46,33 +46,30 @@
             <a routerLink="/orders">Show All</a>
         </div>
         <div class="table-responsive" style="max-height: 420px;">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                <thead>
-                    <tr class="text-white">
-                        <th scope="col">#</th>                     
-                        <th scope="col">Order Id</th>
-                        <th scope="col">Product Id</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Qty</th>                        
-                        <th scope="col">Amount</th>
-                        <th scope="col">Mobile No</th>                                                                              
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let val of TodayMembers;let i=index">
-                        <tr>
-                            <td>{{i+1}}</td>
-                            <td>{{val.regPin}}</td>
-                            <td>{{val.memberId}}</td>
-                            <td>{{val.memberName}}</td>
-                            <td>{{val.mobileNo}}</td>
-                            <td>{{val.refId}}</td>
-                            <td>{{val.creationDate|date:'dd-MM-yyyy'}}</td>                                      
-                            <td><a routerLink="/member-details/{{val.memberId}}" class="btn btn-sm btn-primary">Detail</a></td>
-                        </tr>
-                    </ng-container>                            
-                </tbody>
-            </table>
+                   <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Order No</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Contact No</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Date</th>                               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let order of orderList;let i=index">
+                                    <tr class="text-white">
+                                        <td scope="col">{{i+1}}</td>
+                                        <td scope="col">{{order.orderNo}}</td>
+                                        <td scope="col">{{order.name}}</td>
+                                        <td scope="col">{{order.contactNo}}</td>
+                                        <td scope="col">{{order.address}}</td>
+                                        <td scope="col">{{order.createdOn|date:'dd-MM-yyyy'}}</td>                                       
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
         </div>
     </div>
 </div>   

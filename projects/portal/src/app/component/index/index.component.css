@@ -1,0 +1,21 @@
+.product-img {
+    height: 250px;
+    position: relative;
+}
+.brand-item a {
+    display: flex;
+    padding: 30px 10px;
+    border: 1px solid var(--theme-color-light);
+    border-radius: 5px;
+    height: 260px;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}
+.hs-1 .hero-single .hero-img img {
+    width: 60%;
+    margin: auto;
+    top: -108px;
+    position: relative;
+}
