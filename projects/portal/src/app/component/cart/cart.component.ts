@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
   }
   AddOrder() {
     if (this.validation()) {
-      this.order.productIds = Object.assign([...this.cartItem.map(i => i.productId)]);
+      this.order.productId = Object.assign([...this.cartItem.map(i => i.productId)]);
       this.IsLoading = true;
       this._http.post(CONSTANT.API_URL + 'api/Order/AddOrder', this.order, { headers: this._global.headers }).subscribe((res: any) => {
         if (res.includes('Success')) {

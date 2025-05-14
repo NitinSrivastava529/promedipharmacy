@@ -22,9 +22,9 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.GetOrders();
   }
-     getImgUrl(file: []) {
-    return constant.API_URL+'Resource/Product/' + file.at(0);
-   // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
+  getImgUrl(file: []) {
+    return constant.API_URL + 'Resource/Product/' + file.at(0);
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
   }
   GetOrders() {
     this._http.get(constant.API_URL + 'api/Order/GetOrders').subscribe((res: any) => {
@@ -40,9 +40,9 @@ export class OrdersComponent implements OnInit {
     });
   }
   OrderInfo(orderNo: string) {
+    this.orderInfo = [];
     this._http.get(constant.API_URL + 'api/Order/GetOrderInfo/' + orderNo).subscribe((res: any) => {
       this.orderInfo = res;
-      console.log(res)
     })
   }
 }

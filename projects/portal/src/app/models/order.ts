@@ -1,10 +1,10 @@
 export class Order {
-    productIds: [];
+    productId: [];
     name: string;
     contactNo: string;
     address: string;
     constructor() {
-        this.productIds = [];
+        this.productId = [];
         this.name = "";
         this.contactNo = "";
         this.address = "";
