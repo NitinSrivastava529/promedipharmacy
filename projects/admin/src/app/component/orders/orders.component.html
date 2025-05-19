@@ -12,8 +12,9 @@
                                     <th scope="col">Order No</th>
                                     <th scope="col">Customer Name</th>
                                     <th scope="col">Contact No</th>
+                                    <th scope="col">Email-Id</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">Date</th>                    
                                     <th scope="col" style="width: 7%;">Action</th>
                                 </tr>
                             </thead>
@@ -24,14 +25,14 @@
                                         <td scope="col">{{order.orderNo}}</td>
                                         <td scope="col">{{order.name}}</td>
                                         <td scope="col">{{order.contactNo}}</td>
+                                        <td scope="col">{{order.email}}</td>
                                         <td scope="col">{{order.address}}</td>
-                                        <td scope="col">{{order.createdOn|date:'dd-MM-yyyy'}}</td>
+                                        <td scope="col">{{order.createdOn|date:'dd-MM-yyyy'}}</td>                                    
                                         <td>
                                             <button (click)="DeleteOrder(order.orderNo)"
                                                 class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                            <button onclick="$('#modalOrder').modal('show');"
-                                                (click)="OrderInfo(order.orderNo)" class="btn btn-warning btn-sm m-2"><i
-                                                    class="fa fa-eye"></i></button>
+                                            <button onclick="$('#modalOrder').modal('show');" (click)="OrderInfo(order)"
+                                                class="btn btn-warning btn-sm m-2"><i class="fa fa-eye"></i></button>
                                         </td>
                                     </tr>
                                 </ng-container>
@@ -53,6 +54,12 @@
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Orders Details</h6>
                             <div class="mb-3">
+                                <ul>
+                                    <li class="levelShow">Qty<span>{{orderInfo.qty}}</span></li>
+                                    <li class="levelShow">Amount<span>{{orderInfo.amount}}</span></li>
+                                    <li class="levelShow">Discount<span>{{orderInfo.discount}}</span></li>
+                                    <li class="levelShow">Total<span>{{orderInfo.total}}</span></li>
+                                </ul>
                                 <div class="table-responsive" style="max-height: 500px;">
                                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                                         <thead>
@@ -60,20 +67,27 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Product Id</th>
                                                 <th scope="col">Product Name</th>
+                                                <th scope="col">Mg</th>
+                                                <th scope="col">Pills</th>
                                                 <th scope="col">Qty</th>
+                                                <th scope="col">Discount</th>
                                                 <th scope="col">Price</th>
-                                                <th scope="col">Photo</th>
+                                                <th scope="col">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <ng-container *ngFor="let order of orderInfo;let i=index">
+                                            <ng-container *ngFor="let order of orderInfo.orderItem;let i=index">
                                                 <tr class="text-white">
                                                     <td scope="col">{{i+1}}</td>
-                                                    <td scope="col">{{order.productId}}</td>
-                                                    <td scope="col">{{order.productName}}</td>
+                                                    <td scope="col">{{order.itemId}}</td>
+                                                    <td scope="col">{{order.itemName}}</td>
+                                                    <td scope="col">{{order.mg}}</td>
+                                                    <td scope="col">{{order.pack}}</td>
                                                     <td scope="col">{{order.qty}}</td>
-                                                    <td scope="col">{{order.price}}</td>
-                                                    <td scope="col"><img [src]="getImgUrl(order.photo)" /></td>
+                                                    <td scope="col">{{+order.discount*+order.qty}}</td>
+                                                    <td scope="col">{{+order.price*+order.qty}}</td>
+                                                    <td scope="col">{{((+order.price*+order.qty)-(+order.discount*+order.qty))}}
+                                                    </td>
                                                 </tr>
                                             </ng-container>
                                         </tbody>

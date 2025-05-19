@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CONSTANT } from '../models/constant';
+import { orderItem } from '../models/order';
 import { Product } from '../../../../admin/src/app/model/Product';
 
 @Injectable({
@@ -68,25 +69,32 @@ export class GlobalService {
       return
 
     const cart = Array.from(JSON.parse(localStorage.getItem('cart') ?? ''));
-    if (cart.some((i: any) => i.productId == productId))
+    if (cart.some((i: any) => i.itemId == productId))
       return true
     else
       return false
   }
   addToCart(product: Product) {
-     let cart:Product[]=[];
+    let cart: orderItem[] = [];
 
     if (localStorage.hasOwnProperty('cart')) {
       cart = Array.from(JSON.parse(localStorage.getItem('cart') || ''));
-      if (cart.some((i: any) => i.productId == product.productId)) {
+      if (cart.some((i: any) => i.itemId == product.productId)) {
         alert('already added')
         return
       }
     }
     // if (!localStorage.hasOwnProperty('cart'))  
 
-
-    cart.push(product);
+    cart.push({
+      itemId: product.productId,
+      itemName: product.productName,
+      mg: product.mg,
+      pack: product.qty,
+      qty: 1,
+      price:  product.price,
+      discount:  product.discount
+    });
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 }

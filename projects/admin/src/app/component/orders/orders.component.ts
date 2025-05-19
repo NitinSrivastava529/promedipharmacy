@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { constant } from '../../model/constent';
-import { IOrders } from '../../model/orders';
+import { IorderItem, IOrders } from '../../model/orders';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from '../../model/IProduct';
@@ -15,7 +15,7 @@ import { IProduct } from '../../model/IProduct';
 })
 export class OrdersComponent implements OnInit {
   orderList: IOrders[] = [];
-  orderInfo: IProduct[] = [];
+  orderInfo={} as IOrders;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
   constructor() { }
@@ -39,10 +39,7 @@ export class OrdersComponent implements OnInit {
       this.GetOrders()
     });
   }
-  OrderInfo(orderNo: string) {
-    this.orderInfo = [];
-    this._http.get(constant.API_URL + 'api/Order/GetOrderInfo/' + orderNo).subscribe((res: any) => {
-      this.orderInfo = res;
-    })
+  OrderInfo(order: IOrders) {
+    this.orderInfo = order;
   }
 }

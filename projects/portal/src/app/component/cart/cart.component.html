@@ -19,30 +19,31 @@
     <!-- shop cart -->
     <div class="shop-cart py-90">
         <div class="container">
-            <div class="shop-cart-wrap">  
-                <p style="display: none;"> {{totalAmount()}} </p>            
-                <div class="row" *ngIf="!(totalAmount()>0)">
+            <div class="shop-cart-wrap">
+                <p style="display: none;"> {{total()[0].qty}} </p>
+                <div class="row" *ngIf="!(total()[0].qty>0)">
                     <div class="col-lg-12 text-center">
-                        <img class="cartImage" src="assets/logo/cart.png"/><br>
+                        <img class="cartImage" src="assets/logo/cart.png" /><br>
                         <label class="empty">Your Cart is <i class="text-danger">Empty</i></label>
                         <p class="pb-40">Must add medicine on tha cart before you proceed to check out </p>
-                          <div class="shop-cart-btn">
-                                        <a routerLink="/product" href="#" class="theme-btn"><span
-                                                class="fas fa-arrow-left"></span> Continue
-                                            Shopping</a>
-                                    </div>
+                        <div class="shop-cart-btn">
+                            <a routerLink="/product" href="#" class="theme-btn"><span class="fas fa-arrow-left"></span>
+                                Continue
+                                Shopping</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row" *ngIf="(totalAmount()>0)">
+                <div class="row" *ngIf="(total()[0].qty>0)">
                     <div class="col-lg-8">
                         <div class="cart-table">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
                                             <th>Product Name</th>
+                                            <th>Pack</th>
                                             <th>Qty</th>
+                                            <th>Discount</th>
                                             <th>Price</th>
                                             <th></th>
                                         </tr>
@@ -51,37 +52,37 @@
                                         <ng-container *ngFor="let item of cartItem;let i=index">
                                             <tr>
                                                 <td>
-                                                    <div class="shop-cart-img">
-                                                        <a href="#"><img [src]="getImageUrl(item.photo)" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>
                                                     <div class="shop-cart-content">
-                                                        <h5 class="shop-cart-name"><a href="#">{{item.productName}}</a>
+                                                        <h5 class="shop-cart-name"><a href="#">{{item.itemName}}</a>
                                                         </h5>
-                                                        <div class="shop-cart-info">
-                                                            <p><span>Brand:</span>{{item.brandName}}</p>
-                                                            <p><span>Category:</span>{{item.category}}</p>
-                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="shop-cart-price">
-                                                        <span>{{item.qty}} Pills</span>
+                                                        <span>{{( +item.pack*+item.qty)}} Pills</span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div class="shop-cart-price">
-                                                        <span>${{item.price}}</span>
-                                                    </div>
-                                                </td>
-                                                <!-- <td>
                                                     <div class="shop-cart-qty">
-                                                        <button class="minus-btn"><i class="fal fa-minus"></i></button>
-                                                        <input class="quantity" type="text" value="1" disabled="">
-                                                        <button class="plus-btn"><i class="fal fa-plus"></i></button>
+                                                        <button class="minus-btn" [disabled]="(item.qty==1)?true:false"
+                                                            (click)="ChangeQty(i,'minus')"><i
+                                                                class="fal fa-minus"></i></button>
+                                                        <input class="quantity" type="text" value="1"
+                                                            [(ngModel)]="item.qty" disabled="">
+                                                        <button class="plus-btn" (click)="ChangeQty(i,'plus')"><i
+                                                                class="fal fa-plus"></i></button>
                                                     </div>
-                                                </td> -->
+                                                </td>
+                                                <td>
+                                                    <div class="shop-cart-price">
+                                                        <span>${{+item.discount*+item.qty}}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="shop-cart-price">
+                                                        <span>${{+item.price*+item.qty}}</span>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <a (click)="removeItem(i)" class="shop-cart-remove"><i
                                                             class="far fa-times"></i></a>
@@ -108,9 +109,10 @@
                         <div class="shop-cart-summary">
                             <h5>Cart Summary</h5>
                             <ul>
-                                <li><strong>Total Item:</strong> <span>{{cartItem.length}}</span></li>
-                                <li><strong>Total Amount:</strong> <span>${{totalAmount()}}</span></li>
-                                <li class="shop-cart-total"><strong>Total:</strong> <span>${{totalAmount()}}</span></li>
+                                <li><strong>Total Qty:</strong> <span>{{total()[0].qty}}</span></li>
+                                <li><strong>Total Discount:</strong> <span>${{total()[0].discount}}</span></li>
+                                <li><strong>Total Amount:</strong> <span>${{total()[0].amount}}</span></li>
+                                <li class="shop-cart-total"><strong>Total:</strong> <span>${{total()[0].total}}</span></li>
                             </ul>
                             <!-- <div class="text-end mt-40">
                                 <a href="#" class="theme-btn">Checkout Now<i class="fas fa-arrow-right"></i></a>
@@ -129,6 +131,12 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="contact"
                                                 [(ngModel)]="order.contactNo" placeholder="Your Contact No" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email"
+                                                [(ngModel)]="order.email" placeholder="Your Email Id" required>
                                         </div>
                                     </div>
                                 </div>
