@@ -54,6 +54,7 @@ export class GlobalService {
       'assets/js/countdown.min.js',
       'assets/js/flex-slider.js',
       'assets/js/wow.min.js',
+      'assets/js/contact-form.js',
       'assets/js/main.js'
     ];
     for (let i = 0; i < jsArray.length; i++) {

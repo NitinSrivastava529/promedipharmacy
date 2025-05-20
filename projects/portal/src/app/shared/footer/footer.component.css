@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+   .mobile {
+            z-index: 9999;
+            right: 0px;
+            margin: 245px 0px 0px 0px;
+            position: fixed;
+            top: 0%;
+            background:#fffda2 ;
+            border-radius: 5px;
+        }
+
+            .mobile img {
+                padding: 5px;
+                width: 40px;
+            }
+        /*------------Media Queries--------------*/
+
+        /* Extra small viewport or screen */
+        @media only screen and (max-width : 480px) {
+            .mobile {
+            }
+        }
+        /* Small viewport or screen */
+        @media only screen and (min-width : 767px) {
+            .mobile {
+                display: none;
+            }
+            /*.main-search {
+                margin: 10px 0px 0px 0px !important;
+                padding-bottom: 11px !important;
+            }*/
+        }
+        /* Medium viewport or screen */
+        @media only screen and (min-width : 992px) {
+            .mobile {
+                display: none;
+            }
+        }
+        /* Large viewport or screen */
+        @media only screen and (min-width : 1200px) {
+            .mobile {
+                display: none;
+            }
+        }
