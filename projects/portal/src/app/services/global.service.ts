@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CONSTANT } from '../models/constant';
+import { BehaviorSubject, count, Observable, Subject } from 'rxjs';
 import { orderItem } from '../models/order';
 import { Product } from '../../../../admin/src/app/model/Product';
+import { CONSTANT } from '../models/constant';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,18 @@ export class GlobalService {
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Accept-Control-Allow-Origin', '*')
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    let count = localStorage.getItem('cartCount');
+    if (count)
+      this.updateCart(JSON.parse(count));
+  }
+  cartCount = new BehaviorSubject<number>(0);
+  // cartCount$ = this.cartCount.asObservable();
+
+  updateCart(count: number) {
+    this.cartCount.next(count);
+    localStorage.setItem('cartCount', JSON.stringify(this.cartCount.value))   
+  }
   post(data: any): Observable<any> {
     return this.http.post(this.baseUrl + data.url, data, { headers: this.headers });
   }
@@ -65,6 +76,7 @@ export class GlobalService {
       document.getElementsByTagName('head')[0].appendChild(node);
     }
   }
+
   checkCart(productId: string) {
     if (!localStorage.hasOwnProperty('cart'))
       return
@@ -93,10 +105,12 @@ export class GlobalService {
       mg: product.mg,
       pack: product.qty,
       qty: 1,
-      price:  product.price,
-      discount:  product.discount
+      price: product.price,
+      discount: product.discount
     });
     localStorage.setItem('cart', JSON.stringify(cart));
+    let count=this.cartCount.value;
+    this.updateCart(+count+1)
   }
 }
 

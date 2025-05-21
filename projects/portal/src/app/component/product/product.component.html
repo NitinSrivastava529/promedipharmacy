@@ -26,10 +26,7 @@
                                 <div class="shop-sorty-label">Search Product :</div>
                                 <div class="shop-sort-show"><input (keyup)="filter(search.value)" #search name="search"
                                         type="text" class="form-control" placeholder="Search.." /></div>
-                            </div>
-                            <div class="cart" routerLink="/cart">
-                              <i class="far fa-shopping-bag">&nbsp;</i>&nbsp;Cart
-                            </div>
+                            </div>                        
                         </div>
                     </div>
                     <div class="shop-item-wrap item-4">
@@ -64,7 +61,7 @@
                                                 <button (click)="_global.addToCart(item)" type="button"
                                                     [class]="'product-cart-btn '+(_global.checkCart(item.productId)?'disabled':'')"
                                                     data-bs-placement="left" data-tooltip="tooltip" title="Add To Cart">
-                                                    <i class="far fa-shopping-bag"></i>
+                                                    <i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
                                                 </button>
                                             </div>
                                         </div>

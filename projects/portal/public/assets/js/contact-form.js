@@ -1,4 +1,4 @@
- $(document).ready(function () {
+(function ($) {
 
         $(document).on("click", '.whatsapp', function () {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

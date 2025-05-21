@@ -38,12 +38,11 @@ export class CartComponent implements OnInit {
   ChangeQty(indx: number, type: string) {
     const item = this.cartItem[indx];
     if (type == 'plus') {
-      item.qty = Number(item.qty) + 1;
+      item.qty = Number(item.qty) + 1;     
     }
     if (type == 'minus') {
-      item.qty = Number(item.qty) - 1;
-    }
-    console.log(this.cartItem)
+      item.qty = Number(item.qty) - 1;     
+    }    
     localStorage.setItem('cart', JSON.stringify(this.cartItem))
     this.loadCart()
   }
@@ -60,9 +59,7 @@ export class CartComponent implements OnInit {
     if (this.cartItem.length > 0)
       this.SubTotal()
     else
-      this.total()[0].qty = 0
-
-    console.log(this.cartItem)
+      this.total()[0].qty = 0   
   }
   SubTotal() {
     var obj = { qty: 0, discount: 0, amount: 0, total: 0 }
@@ -82,10 +79,12 @@ export class CartComponent implements OnInit {
     this.order.amount = this.total()[0].amount;
     this.order.discount = this.total()[0].discount;
     this.order.total = this.total()[0].total;
+    this._global.updateCart(this.total()[0].qty)        
   }
   removeItem(i: number) {
     this.cartItem.splice(i, 1)
     localStorage.setItem('cart', JSON.stringify(this.cartItem))
+       this._global.updateCart(this.cartItem.length)  
     this.loadCart()
   }
   AddOrder() { 
@@ -100,6 +99,7 @@ export class CartComponent implements OnInit {
           this.total()[0].discount = 0;
           this.total()[0].amount = 0;
           this.total()[0].total = 0;
+          this._global.updateCart(0)  
           this._router.navigate(['order-complete', { orderno: res.split('|')[0] }]);
         }
       })

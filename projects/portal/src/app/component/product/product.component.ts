@@ -32,11 +32,10 @@ export class ProductComponent implements OnInit {
     this.productQuickView = val[0];
   }
   filter(name: string) {
-    console.log(name)
     if (name.length == 0)
       this.productList = this.products;
     else
-      this.productList = this.products.filter((i: any) => i.productName.includes(name));
+      this.productList = this.products.filter((i: any) => i.productName.toLowerCase().startsWith(name.toLowerCase()));
   }
   GetProduct() {
     this._http.get(CONSTANT.API_URL + 'api/Product/GetProduct').subscribe((res: any) => {

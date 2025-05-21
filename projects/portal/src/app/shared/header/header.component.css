@@ -5,3 +5,22 @@
     top: 26px !important;
     border-radius: 5px !important;
 }
+.cart span.count{
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    background: #FF9800;
+    padding: 3px;
+    border-radius: 40px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: normal;
+    font-size: 13px;
+}
+ul.menubar li a:hover{
+    color: #FF9800;
+}
+ul.menubar li a:focus{
+    color: #FF9800;
+}
