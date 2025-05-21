@@ -84,9 +84,9 @@
                                                     <td scope="col">{{order.mg}}</td>
                                                     <td scope="col">{{order.pack}}</td>
                                                     <td scope="col">{{order.qty}}</td>
-                                                    <td scope="col">{{+order.discount*+order.qty}}</td>
+                                                    <td scope="col">{{(order.qty==1)?0:+order.discount*(+order.qty-1)}}</td>
                                                     <td scope="col">{{+order.price*+order.qty}}</td>
-                                                    <td scope="col">{{((+order.price*+order.qty)-(+order.discount*+order.qty))}}
+                                                    <td scope="col">{{((+order.price*+order.qty)-((order.qty==1)?0:+order.discount*(+order.qty-1)))}}
                                                     </td>
                                                 </tr>
                                             </ng-container>

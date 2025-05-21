@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
     var obj = { qty: 0, discount: 0, amount: 0, total: 0 }
     this.cartItem.forEach(i => {
       obj.qty += +i.qty
-      obj.discount += (+i.discount) * (+i.qty)
+      obj.discount += ((+i.qty==1)?0:+i.discount*(+i.qty-1))
       obj.amount += +i.price * (+i.qty)
       obj.total = +obj.amount - +obj.discount
     });

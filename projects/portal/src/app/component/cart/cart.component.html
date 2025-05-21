@@ -75,7 +75,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="shop-cart-price">
-                                                        <span>${{+item.discount*+item.qty}}</span>
+                                                        <span>${{(+item.qty==1)?0:+item.discount*(+item.qty-1)}}</span>
                                                     </div>
                                                 </td>
                                                 <td>
