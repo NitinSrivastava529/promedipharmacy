@@ -1,5 +1,5 @@
-(function ($) {
 
+$(document).ready(function () {
         $(document).on("click", '.whatsapp', function () {
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 var sText = "promedi pharmacy";
@@ -13,5 +13,8 @@
             else {
                 alert("Whatsapp client not available.");
             }
-        });
+        });   
+        $('ul.menubar li a').on('click',function(){
+            $('button.btn-close').trigger('click')
+        })  
     });

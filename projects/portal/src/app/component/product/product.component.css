@@ -27,10 +27,10 @@
 }
 
 .product-img img {
-    background: #ddd;
+      background: #ddd;
     border-radius: 13px;
-    width: 100% !important;
-    height: 250px;
+    width: 300px !important;
+    height: 250px !important;
 }
 
 .product-item:hover {
@@ -42,7 +42,7 @@
 .product-cart-btn {
     position: relative;
     border: none;
-    background: var(--theme-color);
+    background:#f84c86;
     color: var(--color-white);
     border-radius: 9px;
     text-align: center;

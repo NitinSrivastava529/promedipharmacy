@@ -1,5 +1,5 @@
 .cart {
-    background: #03a297 !important;
+    background: #ff0000 !important;
     color: #fff !important;
     padding: 1px 11px !important;
     top: 26px !important;
@@ -19,8 +19,17 @@
     font-size: 13px;
 }
 ul.menubar li a:hover{
-    color: #FF9800;
+    color: #f7ffa7;
 }
 ul.menubar li a:focus{
-    color: #FF9800;
+    color: #f7ffa7;
+}
+@media only screen and (max-width : 480px) {
+    .cart span.count {
+        right: 6px;
+        top: 6px;
+    }
+    .nav-item span{
+    display: none;
+}
 }

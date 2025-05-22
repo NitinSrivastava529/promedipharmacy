@@ -92,7 +92,7 @@ Table of contents
 :root {
   --body-font: 'Roboto', sans-serif;
   --heading-font: 'Inter', sans-serif;
-  --theme-color: #03A297;
+  --theme-color: #ef5a8d;
   --theme-color2: #023350;
   --theme-color-light: rgba(3, 162, 151, .08);
   --theme-bg-light: #F5F7FA;
@@ -819,7 +819,7 @@ label {
 #scroll-top.active{
   opacity: 1;
   visibility: visible;
-  bottom: 20px;
+  bottom: 15%;
 }
 
 
@@ -1564,7 +1564,7 @@ label {
   .navbar-toggler span{
     display: block;
     width: 22px;
-    border-bottom: 3px solid var(--theme-color);
+    border-bottom: 3px solid #fff;
     border-radius: 50px;
     margin-top: 5px;
   }
@@ -3609,7 +3609,7 @@ label {
 }
 
 .checkout-complete-content{
-  background: var(--theme-bg-light);
+  background: #fff;
   border-radius: 20px;
   padding: 50px;
   text-align: center;
@@ -4169,7 +4169,7 @@ label {
   right: 0px;
   top: 0px;
   display: inline-block;
-  background: var(--theme-color);
+  background: #f84c86;
   color: var(--color-white);
   font-size: 11px;
   padding: 2px 15px;
@@ -4232,8 +4232,10 @@ label {
 }
 
 .product-title a{
-  font-size: 17px;
-  color: var(--color-dark);
+ text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 700;
+    color: #727272;
 }
 
 .product-title a:hover{
@@ -4974,7 +4976,7 @@ label {
 .feature-wrap{
   padding: 40px 20px;
   border-radius: 20px;
-  background: var(--color-dark);
+  background: #f078a0;
 }
 
 .feature-wrap .feature-item{
@@ -4996,7 +4998,7 @@ label {
   width: 65px;
   height: 65px;
   line-height: 60px;
-  background: var(--theme-color);
+  background: #ff9595;
   color: var(--color-white);
   font-size: 30px;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
@@ -5012,7 +5014,6 @@ label {
   height: 65px;
   top: -5px;
   left: -5px;
-  border: 2px solid var(--theme-color);
 }
 
 .feature-content h4{
@@ -8502,7 +8503,7 @@ label {
 ======================*/
 
 .footer-area {
-  background: var(--footer-bg);
+  background: #a30037;
   position: relative;
   z-index: 1;
 }
@@ -8725,7 +8726,7 @@ label {
 .footer-social {
   display: flex;
   gap: 15px;
-  justify-content: end;
+  justify-content: flex-start;
 }
 
 .footer-social span{
@@ -8734,19 +8735,12 @@ label {
 }
 
 .footer-social a{
-  height: 38px;
-  width: 38px;
-  line-height: 39px;
-  text-align: center;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-white);
-  transition: var(--transition);
-}
-
-.footer-social a:hover {
-  background: var(--theme-color);
-  color: var(--color-white);
+ height: 38px;    
+    line-height: 39px;
+    text-align: center;
+    border-radius: 50px;
+    color: #ffb61f;
+    transition: var(--transition);
 }
 
 /* footer area 2 */
@@ -8899,13 +8893,23 @@ label {
 65. Home 2 css 
 ======================*/
 
-.home-2 .navbar{
+/* .home-2 .navbar{
   background: transparent;
   z-index: 3;
-}
+} */
+.home-2 .navbar{
+background: linear-gradient(to right, #ffffff, #E91E63);
+    z-index: 3;
+    color: #fff;
+    width: 85%;
+    left: 7%;
+    padding: 0px 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+ }
 
 .home-2 .navbar.fixed-top{
-  background: var(--color-white);
+    background: linear-gradient(to right, #ffffff, #E91E63);
 }
 
 .home-2 .nav-right-link{
@@ -9052,11 +9056,16 @@ label {
 }
 
 @media all and (min-width: 992px) {
-  .home-2 .navbar .nav-item .nav-link {
+  /* .home-2 .navbar .nav-item .nav-link {
     font-weight: bold;
     color: #06978d;
     padding: 25px 0 25px 0;
-  }
+  } */
+        .home-2 .navbar .nav-item .nav-link {
+        font-weight: bold;
+        color: #ffffff;
+        padding: 25px 0 25px 0;
+    }
 
   .home-2 .navbar .nav-item .nav-link:hover,
   .home-2 .navbar .nav-item .nav-link.active{

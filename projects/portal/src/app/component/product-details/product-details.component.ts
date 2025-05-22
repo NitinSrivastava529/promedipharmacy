@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productId=this.route.snapshot.params['id']
     this.GetProduct();
 
-  }
+  }  
   getImgUrl(file: string) {
     return CONSTANT.API_URL + 'Resource/Product/' + file;
     // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
