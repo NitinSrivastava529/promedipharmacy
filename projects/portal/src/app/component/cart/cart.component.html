@@ -25,7 +25,7 @@
                     <div class="col-lg-12 text-center">
                         <img class="cartImage" src="assets/logo/cart.png" /><br>
                         <label class="empty">Your Cart is <i class="text-danger">Empty</i></label>
-                        <p class="pb-40">Must add medicine on tha cart before you proceed to check out </p>
+                        <p class="pb-40">Must add the medicine in tha cart before you proceed to check out </p>
                         <div class="shop-cart-btn">
                             <a routerLink="/product" href="#" class="theme-btn"><span class="fas fa-arrow-left"></span>
                                 Continue
@@ -129,13 +129,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="contact"
+                                            <input type="text" class="form-control" name="contact" maxlength="10"
                                                 [(ngModel)]="order.contactNo" placeholder="Your Contact No" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="email"
+                                            <input type="text" class="form-control" name="email" maxlength="50"
                                                 [(ngModel)]="order.email" placeholder="Your Email Id" required>
                                         </div>
                                     </div>

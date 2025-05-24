@@ -42,78 +42,58 @@
     </div>
     <!-- hero section end -->
     <!-- brand area -->
-    <div class="brand-area pb-100">
+    <div class="brand-area pb-80 mt-40">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="site-heading-inline">
                         <h2 class="site-title">Our Medicines</h2>
-                        <a href="#">All Medicines <i class="fas fa-angle-double-right"></i></a>
+                        <a href="#" routerLink="/gallery">All Medicines <i class="fas fa-angle-double-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="brand-slider owl-carousel owl-theme">
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/cialis 20 mg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/cialis 40 mg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/oxycodone.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/viagra 100.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/viagra 200.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/tramadol 100 mg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/soma 500 mg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/soma 350 mg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/percocet.png" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/trakem tramadol.jpg" alt="">
-                    </a>
-                </div>
-                <div class="brand-item">
-                    <a href="#">
-                        <img src="/assets/product/ultram tramadol 100mg.jpg" alt="">
-                    </a>
+            <div class="shop-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="shop-item-wrap item-4">
+                                <div class="row g-4">
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="gallery-item" routerLink="/gallery">
+                                            <img src="/assets/product/p1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="gallery-item" routerLink="/gallery">
+                                            <img src="/assets/product/p2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="gallery-item" routerLink="/gallery">
+                                            <img src="/assets/product/p3.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="gallery-item" routerLink="/gallery">
+                                            <img src="/assets/product/p4.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6 col-lg-2">
+                                        <div class="gallery-item">
+                                            <img src="/assets/product/p5.jpg" alt="">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- brand area end -->
     <!-- feature area -->
-    <div class="feature-area pb-100">
+    <div class="feature-area pb-80">
         <div class="container wow fadeInUp" data-wow-delay=".25s">
             <div class="feature-wrap">
                 <div class="row g-0">
@@ -185,41 +165,50 @@
                             <div class="shop-item-wrap item-4">
                                 <div class="row g-4">
                                     <ng-container *ngFor="let item of productList">
-                                         <div class="col-md-6 col-lg-3">
-                                    <div class="product-item">
-                                        <div class="product-img">
-                                            <span class="type">{{item.mg}} mg</span>
-                                                        <a href="#" (click)="QuickView(item.productId)"
-                                                                data-bs-toggle="modal" data-bs-target="#quickview"><img
-                                                            [src]="getImgUrl(item.photo[0])" alt=""></a>
-                                            <div class="product-action-wrap">
-                                                <div class="product-action">
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    <span class="type">{{item.mg}} mg</span>
                                                     <a href="#" (click)="QuickView(item.productId)"
-                                                        data-bs-toggle="modal" data-bs-target="#quickview"
-                                                        data-tooltip="tooltip" title="Quick View"><i
-                                                            class="far fa-eye"></i></a>
+                                                        data-bs-toggle="modal" data-bs-target="#quickview"><img
+                                                            [src]="getImgUrl(item.photo[0])" alt=""></a>
+                                                    <div class="product-action-wrap">
+                                                        <div class="product-action">
+                                                            <a href="#" (click)="QuickView(item.productId)"
+                                                                data-bs-toggle="modal" data-bs-target="#quickview"
+                                                                data-tooltip="tooltip" title="Quick View"><i
+                                                                    class="far fa-eye"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3 class="product-title"><a
+                                                            href="shop-single.html">{{item.productName}}</a>
+                                                    </h3>
+                                                    <div class="quickview-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <span class="rating-count"> (4 Customer Reviews)</span>
+                                                    </div>
+                                                    <label>{{item.brandName}}</label>
+                                                    <div class="product-bottom">
+                                                        <div class="product-price">
+                                                            <span>{{item.qty}} pills / {{item.price}}$</span>
+                                                            &nbsp;<del>${{item.discount}}</del>
+                                                        </div>
+                                                        <button (click)="_global.addToCart(item)" type="button"
+                                                            [class]="'product-cart-btn '+(_global.checkCart(item.productId)?'disabled':'')"
+                                                            data-bs-placement="left" data-tooltip="tooltip"
+                                                            title="Add To Cart">
+                                                            <i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product-content">
-                                            <h3 class="product-title"><a
-                                                    href="shop-single.html">{{item.productName}}</a>
-                                            </h3>
-                                            <label>{{item.brandName}}</label>
-                                            <div class="product-bottom">
-                                                <div class="product-price">
-                                                    <span>{{item.qty}} pills / {{item.price}}$</span>
-                                                    &nbsp;<del>${{item.discount}}</del>
-                                                </div>
-                                                <button (click)="_global.addToCart(item)" type="button"
-                                                    [class]="'product-cart-btn '+(_global.checkCart(item.productId)?'disabled':'')"
-                                                    data-bs-placement="left" data-tooltip="tooltip" title="Add To Cart">
-                                                    <i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                     </ng-container>
                                 </div>
                             </div>
