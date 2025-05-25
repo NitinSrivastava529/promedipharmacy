@@ -185,15 +185,16 @@
                                                     <h3 class="product-title"><a
                                                             href="shop-single.html">{{item.productName}}</a>
                                                     </h3>
-                                                    <div class="quickview-rating">
+                                                    <!-- <div class="quickview-rating">
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="far fa-star"></i>
                                                         <span class="rating-count"> (4 Customer Reviews)</span>
-                                                    </div>
+                                                    </div> -->
                                                     <label>{{item.brandName}}</label>
+                                                       <label style="margin-left: 10px;color: rgb(180, 176, 176); ">| {{item.category}}</label>
                                                     <div class="product-bottom">
                                                         <div class="product-price">
                                                             <span>{{item.qty}} pills / {{item.price}}$</span>
@@ -236,14 +237,14 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <div class="quickview-content">
                                 <h4 class="quickview-title">{{productQuickView.productName}}</h4>
-                                <div class="quickview-rating">
+                                <!-- <div class="quickview-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
                                     <i class="far fa-star"></i>
                                     <span class="rating-count"> (4 Customer Reviews)</span>
-                                </div>
+                                </div> -->
                                 <div class="quickview-price">
                                     <h5><del>${{productQuickView.discount}}</del><span>${{productQuickView.price}}</span>
                                     </h5>

@@ -15,13 +15,15 @@ import { CONSTANT } from '../../models/constant';
 export class ProductComponent implements OnInit {
   productQuickView: any;
   products: any;
+  category: any;
   productList: any;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
   constructor() { }
   ngOnInit(): void {
     this._global.loadScript();
-    this.GetProduct();
+    this.GetProduct();             
+    this.GetCategories();             
   }
   getImgUrl(file: string) {
     return CONSTANT.API_URL + 'Resource/Product/' + file;
@@ -35,12 +37,20 @@ export class ProductComponent implements OnInit {
     if (name.length == 0)
       this.productList = this.products;
     else
-      this.productList = this.products.filter((i: any) => i.productName.toLowerCase().startsWith(name.toLowerCase()));
+      this.productList = this.products.filter((i: any) => 
+    i.category.toLowerCase().startsWith(name.toLowerCase()) ||
+    i.productName.toLowerCase().startsWith(name.toLowerCase())
+    );
   }
   GetProduct() {
     this._http.get(CONSTANT.API_URL + 'api/Product/GetProduct').subscribe((res: any) => {
       this.products = res;
       this.productList = res;
+    })
+  }
+    GetCategories() {
+    this._http.get(CONSTANT.API_URL + 'api/Product/GetCategories').subscribe((res: any) => {    
+      this.category = res;      
     })
   }
 }
