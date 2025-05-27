@@ -15,18 +15,23 @@ import { FormsModule } from '@angular/forms';
 export class IndexComponent implements OnInit,AfterViewInit {
   productQuickView: any;
   productList: any;
+  bannerList: any;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
   constructor() { }
-  ngOnInit(): void {
-   
+  ngOnInit(): void {  
    this.GetProduct()    
+   this.GetBanner()    
   }
   ngAfterViewInit(): void {
       this._global.loadScript();
   }
   getImgUrl(file: string) {
     return CONSTANT.API_URL + 'Resource/Product/' + file;
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
+  }
+    getBannerUrl(file: string) {
+    return CONSTANT.API_URL + 'Resource/Banner/' + file;
     // return this.sanitizer.bypassSecurityTrustResourceUrl(CONSTANT.API_URL+'/Resource/Plan/' + file);
   }
    QuickView(productId: string) {
@@ -36,6 +41,11 @@ export class IndexComponent implements OnInit,AfterViewInit {
   GetProduct() {
     this._http.get(CONSTANT.API_URL + 'api/Product/GetProduct').subscribe((res: any) => {  
       this.productList = res.splice(0,4);
+    })
+  }
+   GetBanner() {
+    this._http.get(CONSTANT.API_URL + 'api/Banner/GetBanners').subscribe((res: any) => {  
+      this.bannerList = res.splice(0,2);  
     })
   }
 }

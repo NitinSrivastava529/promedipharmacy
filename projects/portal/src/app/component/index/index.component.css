@@ -48,7 +48,7 @@
     height: 250px !important;
 }
 
-.gallery-item {
+.gallery-item ,.banner-item{
     cursor: pointer;
     box-shadow: 0px -1px 4px 1px #ddd !important;
     border-radius: 13px;
@@ -56,7 +56,8 @@
     padding: 10px;
     height: 250px;
 }
-.gallery-item :hover {
+
+.gallery-item ,.banner-item:hover {
     box-shadow: 0px -1px 4px 1px #ddd !important;
     /* border-radius: 3px; */
     transition: 0.4s ease-in-out;
@@ -65,6 +66,11 @@
 .gallery-item img{   
     border-radius: 13px;       
     height: 100%;
+}
+.banner-item img{
+    border-radius: 13px;       
+    width: 100%;
+    height: 230px;
 }
 .product-item:hover {
     box-shadow: 0px -1px 4px 1px #ddd !important;

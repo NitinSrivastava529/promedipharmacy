@@ -23,7 +23,7 @@ export class EnquiryComponent implements OnInit {
       this.enquiryList = res;
     })
   }
-     DeleteEnquiry(autoId: number) {
+  DeleteEnquiry(autoId: number) {
     if (!confirm('are you sure to delete?'))
       return
 

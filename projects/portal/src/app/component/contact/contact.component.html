@@ -41,19 +41,22 @@
                                             <i class="fal fa-headset"></i>
                                         </div>
                                         <div class="contact-info-content">
-                                            <h5>Call Us</h5>
-                                            <p>+19373133646</p>
+                                            <h5>Contact Us</h5>
+                                            <p><i class="fa fa-phone">&nbsp;</i>+19373133646</p>
+                                            <p>{{'Info@promedipharmacy.store'}}</p>                                           
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="contact-info">
                                         <div class="contact-info-icon">
-                                            <i class="fal fa-envelopes"></i>
+                                            <i class="fal fa-users"></i>
                                         </div>
                                         <div class="contact-info-content">
-                                            <h5>Email Us</h5>
-                                            <p><a href="#" class="__cf_email__">{{'promedipharmacy@aol.com'}}</a></p>                                            
+                                            <h5>Total Visitors</h5>
+                                            <p> <a href="https://www.freecounterstat.com" title="free counters"><img
+                                                src="https://counter4.optistats.ovh/private/freecounterstat.php?c=aen9mjhhmy8xztaek8j99sepgu2226ez"
+                                                border="0" title="free counters" alt="free counters"></a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +71,7 @@
                                             <p>Saturday-Sunday - <span class="text-danger">Closed</span></p>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                               
                             </div>
                         </div>
                     </div>
@@ -76,34 +79,42 @@
                         <div class="contact-form">
                             <div class="contact-form-header">
                                 <h2>Get In Touch</h2>
-                                <p>We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out. Our team is here to help and will get back to you as soon as possible. </p>
+                                <p>We’d love to hear from you! Whether you have a question, feedback, or just want to
+                                    say hello, feel free to reach out. Our team is here to help and will get back to you
+                                    as soon as possible. </p>
                             </div>
                             <div id="contact-form">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name" [(ngModel)]="enquiryObj.name"
-                                                placeholder="Your Name" required>
+                                            <input type="text" class="form-control" name="name"
+                                                [(ngModel)]="enquiryObj.name" placeholder="Your Name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="contact" [(ngModel)]="enquiryObj.contactNo"
-                                                placeholder="Your Contact No" required>
+                                            <input type="text" class="form-control" name="contact"
+                                                [(ngModel)]="enquiryObj.contactNo" placeholder="Your Contact No"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="subject" [(ngModel)]="enquiryObj.subject"
-                                        placeholder="Your Subject" required>
+                                    <input type="text" class="form-control" name="subject"
+                                        [(ngModel)]="enquiryObj.subject" placeholder="Your Subject" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="message" cols="30" rows="4" class="form-control" [(ngModel)]="enquiryObj.message"
-                                        placeholder="Write Your Message" required></textarea>
-                                </div>                               
+                                    <textarea name="message" cols="30" rows="1" class="form-control"
+                                        [(ngModel)]="enquiryObj.message" placeholder="Write Your Message"
+                                        required></textarea>
+                                </div>
                                 <div class="col-md-12 my-3 btnControl">
-                                 <button *ngIf="!IsLoading" type="button" (click)="addEnquiry()" class="theme-btn">Send
-                                    Message <i class="far fa-paper-plane"></i></button>  <div [class]="'form-messege text-'+(message().includes('Success')?'success':'danger')">{{message()}}</div>
+                                    <button *ngIf="!IsLoading" type="button" (click)="addEnquiry()"
+                                        class="theme-btn">Send
+                                        Message <i class="far fa-paper-plane"></i></button>
+                                    <div
+                                        [class]="'form-messege text-'+(message().includes('Success')?'success':'danger')">
+                                        {{message()}}</div>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +127,9 @@
 
     <!-- map -->
     <div class="contact-map container pb-80">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.4131166765546!2d-83.46516802448866!3d33.9360093732009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f672ff8e2f66b7%3A0x484a681873d46351!2s213%20Westpark%20Dr%2C%20Athens%2C%20GA%2030606%2C%20USA!5e1!3m2!1sen!2sin!4v1747192231077!5m2!1sen!2sin" style="border:0;" allowfullscreen=""></iframe>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.4131166765546!2d-83.46516802448866!3d33.9360093732009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f672ff8e2f66b7%3A0x484a681873d46351!2s213%20Westpark%20Dr%2C%20Athens%2C%20GA%2030606%2C%20USA!5e1!3m2!1sen!2sin!4v1747192231077!5m2!1sen!2sin"
+            style="border:0;" allowfullscreen=""></iframe>
         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
             style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
     </div>

@@ -1,0 +1,39 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-5">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="input-group mb-3">
+                    <input name="fileUpload" (change)="changeFile($event)" class="form-control bg-dark" type="file"
+                        id="category_banner" accept=".jpeg,.png,.jpg,.pdf" />
+                    <button *ngIf="!isLoading" (click)="upload()" class="btn btn-primary">Upload</button>
+                    <img *ngIf="isLoading" class="loading" src="./loading.gif" />
+                </div>
+                <div class="mb-3">
+                    <div class="table-responsive" style="max-height: 560px;">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Banner</th>
+                                    <th scope="col">CMD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let val of bannerList;let i=index">
+                                    <tr>
+                                        <td>{{i+1}}</td>
+                                        <td><img [src]="getBannerUrl(val.path)" style="width: 220px;" /></td>
+                                        <td>
+                                            <button (click)="delete(val.autoId)" class="btn btn-danger btn-sm m-2"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

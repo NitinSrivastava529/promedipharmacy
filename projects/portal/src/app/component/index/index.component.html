@@ -40,6 +40,30 @@
             </div>
         </div>
     </div>
+    <div class="brand-area pb-40 mt-40">
+        <div class="container">
+            <div class="shop-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="shop-item-wrap item-4">
+                                <div class="row g-4">
+                                    <ng-container *ngFor="let item of bannerList">
+                                        <div class="col-md-6 col-lg-6">
+                                            <div class="banner-item" routerLink="/gallery">
+                                                <img [src]="getBannerUrl(item.path)" alt="">
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- hero section end -->
     <!-- brand area -->
     <div class="brand-area pb-80 mt-40">
@@ -194,7 +218,8 @@
                                                         <span class="rating-count"> (4 Customer Reviews)</span>
                                                     </div> -->
                                                     <label>{{item.brandName}}</label>
-                                                       <label style="margin-left: 10px;color: rgb(180, 176, 176); ">| {{item.category}}</label>
+                                                    <label style="margin-left: 10px;color: rgb(180, 176, 176); ">|
+                                                        {{item.category}}</label>
                                                     <div class="product-bottom">
                                                         <div class="product-price">
                                                             <span>{{item.qty}} pills / {{item.price}}$</span>

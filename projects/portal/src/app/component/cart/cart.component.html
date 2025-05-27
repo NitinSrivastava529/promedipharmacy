@@ -69,7 +69,7 @@
                                                                 class="fal fa-minus"></i></button>
                                                         <input class="quantity" type="text" value="1"
                                                             [(ngModel)]="item.qty" disabled="">
-                                                        <button class="plus-btn" [disabled]="(item.qty==20)?true:false" (click)="ChangeQty(i,'plus')"><i
+                                                        <button class="plus-btn" (click)="ChangeQty(i,'plus')"><i
                                                                 class="fal fa-plus"></i></button>
                                                     </div>
                                                 </td>
