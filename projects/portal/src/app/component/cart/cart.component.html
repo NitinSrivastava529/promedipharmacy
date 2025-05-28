@@ -75,7 +75,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="shop-cart-price">
-                                                        <span>${{(+item.qty==1)?0:+item.discount*(+item.qty-1)}}</span>
+                                                      <span>${{calDiscount(+item.qty,+item.discount)}}</span>
                                                     </div>
                                                 </td>
                                                 <td>

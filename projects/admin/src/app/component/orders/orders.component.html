@@ -2,7 +2,9 @@
     <div class="row g-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Manage Orders</h6>
+                <h6 class="mb-4">Manage Orders
+                    <!-- <button (click)="exportToExcel(orderList, 'Order')">Export to Excel</button> -->
+</h6>
                 <div class="mb-3">
                     <div class="table-responsive" style="max-height: 500px;">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -84,9 +86,9 @@
                                                     <td scope="col">{{order.mg}}</td>
                                                     <td scope="col">{{order.pack}}</td>
                                                     <td scope="col">{{order.qty}}</td>
-                                                    <td scope="col">{{(order.qty==1)?0:+order.discount*(+order.qty-1)}}</td>
+                                                    <td scope="col">{{(order.qty==1)?0:+order.discount*(+order.qty/2)}}</td>
                                                     <td scope="col">{{+order.price*+order.qty}}</td>
-                                                    <td scope="col">{{((+order.price*+order.qty)-((order.qty==1)?0:+order.discount*(+order.qty-1)))}}
+                                                    <td scope="col">{{((+order.price*+order.qty)-((order.qty==1)?0:+order.discount*(+order.qty/2)))}}
                                                     </td>
                                                 </tr>
                                             </ng-container>

@@ -72,6 +72,7 @@
     color: #fff;
     padding: 1px 7px;
     border-radius: 3px;
+        margin:3px;
     cursor: pointer;
 }
 .category-filter ul li:hover {
