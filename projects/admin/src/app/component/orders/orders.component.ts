@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { IProduct } from '../../model/IProduct';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { config } from 'rxjs';
 
 @Component({
   selector: 'app-orders',
@@ -17,7 +18,14 @@ import * as FileSaver from 'file-saver';
 })
 export class OrdersComponent implements OnInit {
   orderList: IOrders[] = [];
-  orderInfo={} as IOrders;
+  orderReport: any;
+  report = {
+    'from': '',
+    'to': '',
+    'status': 'ALL'
+  };
+  IsLoading: boolean = false;
+  orderInfo = {} as IOrders;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
   constructor() { }
@@ -53,11 +61,27 @@ export class OrdersComponent implements OnInit {
       this.orderList = res
     })
   }
+  GetReport() {
+    this.IsLoading = true;
+    this._http.get(constant.API_URL + 'api/Order/GetOrderReport?from=' + this.report.from + '&to=' + this.report.to + '&status=' + this.report.status + '').subscribe((res: any) => {
+      this.orderReport = res;
+      this.IsLoading = false;
+      this.exportToExcel( this.orderReport, 'Order')
+    })
+  }
   DeleteOrder(orderNo: string) {
     if (!confirm('are you sure to delete?'))
       return
 
     this._http.delete(constant.API_URL + 'api/Order/DeleteOrder?Order=' + orderNo).subscribe((res: any) => {
+      this.GetOrders()
+    });
+  }
+  CompleteOrder(orderNo: string) {
+    if (!confirm('are you sure?'))
+      return
+
+    this._http.put(constant.API_URL + 'api/Order/MarkOrderComplete/' + orderNo, { header: this._global.headers }).subscribe((res: any) => {
       this.GetOrders()
     });
   }

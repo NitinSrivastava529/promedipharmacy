@@ -18,8 +18,7 @@
 }
 
 .loading {
-    width: 35px;
-    background: #000000;
+    width: 35px;  
 }
 
 table th,
@@ -49,6 +48,12 @@ table tbody img {
     background: red;
     color: #fff;
     border-radius: 20px
+}
+select {
+    background: #000000;
+    border: none;
+    color: #fff;
+    padding: 0 5px;
 }
 ul li {
     display: inline-block;

@@ -55,7 +55,9 @@
     transition: var(--transition);
     box-shadow: var(--box-shadow);
 }
-
+.product-content label {
+    font-size: 13px;
+}
 .category-filter {
  display: flex;
 }
