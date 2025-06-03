@@ -5,7 +5,7 @@ $(document).ready(function () {
                 var sText = "promedi pharmacy";
                 var sUrl = "http://promedipharmacy.com/";
                 var sMsg = encodeURIComponent(sText) + " - " + encodeURIComponent(sUrl);
-                var Mobile = 13264671179;
+                var Mobile = 16824433693;
                 var whatsapp_url = "whatsapp://send?phone=" + Mobile;
                 //var whatsapp_url = "com.facebook.katana";
                 window.location.href = whatsapp_url;

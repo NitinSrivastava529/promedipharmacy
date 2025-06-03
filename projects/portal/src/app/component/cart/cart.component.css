@@ -35,6 +35,13 @@
     align-items: center;
     gap: 25px;
 }
+#tblTotal th:first{
+    width: 55%;
+}
+#tblTotal th:last-child{
+    width: 35%;
+    text-align: end;
+}
 .loading{
     width: 42px;
 }

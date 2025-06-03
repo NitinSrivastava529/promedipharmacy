@@ -75,7 +75,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="shop-cart-price">
-                                                      <span>${{calDiscount(+item.qty,+item.discount)}}</span>
+                                                        <span>${{calDiscount(+item.qty,+item.discount)}}</span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -108,15 +108,33 @@
                     <div class="col-lg-4">
                         <div class="shop-cart-summary">
                             <h5>Cart Summary</h5>
-                            <ul>
-                                <li><strong>Total Qty:</strong> <span>{{total()[0].qty}}</span></li>
-                                <li><strong>Total Discount:</strong> <span>${{total()[0].discount}}</span></li>
-                                <li><strong>Total Amount:</strong> <span>${{total()[0].amount}}</span></li>
-                                <li class="shop-cart-total"><strong>Total:</strong> <span>${{total()[0].total}}</span></li>
-                            </ul>
-                            <!-- <div class="text-end mt-40">
-                                <a href="#" class="theme-btn">Checkout Now<i class="fas fa-arrow-right"></i></a>
-                            </div> -->
+                            <table class="table table-bordered" id="tblTotal">
+                                <tr>
+                                    <th>Total Qty</th>
+                                    <th>:</th>
+                                    <th>${{total()[0].qty}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Total Discount</th>
+                                    <th>:</th>
+                                    <th>${{total()[0].discount}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Delivery Charges</th>
+                                    <th>:</th>
+                                    <th>$0</th>
+                                </tr>
+                                <tr>
+                                    <th>Total Amount</th>
+                                    <th>:</th>
+                                    <th>${{total()[0].amount}}</th>
+                                </tr>
+                                <tr style="background: #ef5a8d;color: #fff;">
+                                    <th>Grand Total</th>
+                                    <th>:</th>
+                                    <th>${{total()[0].total}}</th>
+                                </tr>
+                            </table>                            
                         </div>
                         <div class="contact-form">
                             <div id="contact-form">
