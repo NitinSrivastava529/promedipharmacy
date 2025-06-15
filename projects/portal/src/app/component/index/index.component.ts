@@ -5,10 +5,11 @@ import { HttpClient } from '@angular/common/http';
 import { CONSTANT } from '../../models/constant';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TestComponent } from "../test/test.component";
 
 @Component({
   selector: 'app-index',
-  imports: [RouterLink,CommonModule,FormsModule],
+  imports: [RouterLink, CommonModule, FormsModule, TestComponent,TestComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })

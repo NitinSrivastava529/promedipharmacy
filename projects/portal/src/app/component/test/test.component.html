@@ -1,0 +1,19 @@
+<!-- carousel.component.html -->
+<div class="carousel" *ngIf="!loading && imageGroups.length > 0">
+  <div
+    class="slide-container"
+    [style.transform]="transformStyle"
+    [class.animate]="isAnimating"
+  >
+    <div class="slide" *ngFor="let group of imageGroups">
+      <img *ngFor="let img of group" [src]="img" class="carousel-image" />
+    </div>
+  </div>
+
+  <button class="nav prev" (click)="prev()">‹</button>
+  <button class="nav next" (click)="next()">›</button>
+</div>
+
+<div *ngIf="loading" class="loading">
+  Loading images...
+</div>
