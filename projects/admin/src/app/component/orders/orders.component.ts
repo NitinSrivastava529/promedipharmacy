@@ -19,6 +19,7 @@ import { config } from 'rxjs';
 export class OrdersComponent implements OnInit {
   orderList: IOrders[] = [];
   orderReport: any;
+    temp = "";
   report = {
     'from': '',
     'to': '',
@@ -67,6 +68,21 @@ export class OrdersComponent implements OnInit {
       this.orderReport = res;
       this.IsLoading = false;
       this.exportToExcel( this.orderReport, 'Order')
+    })
+  }
+  checkGroup(category: string) {
+    if (this.temp != category) {
+      this.temp = category;
+      return true
+    }
+    else
+      return false
+  }
+  GetReportShow(){
+      this.IsLoading = true;
+    this._http.get(constant.API_URL + 'api/Order/GetOrderReport?from=' + this.report.from + '&to=' + this.report.to + '&status=' + this.report.status + '').subscribe((res: any) => {
+      this.orderReport = res;
+      this.IsLoading = false;     
     })
   }
   DeleteOrder(orderNo: string) {

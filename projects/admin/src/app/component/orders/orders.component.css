@@ -55,6 +55,11 @@ select {
     color: #fff;
     padding: 0 5px;
 }
+.group {
+    background: #0a0a16;
+    font-size: 13px;
+}
+
 ul li {
     display: inline-block;
     margin-right: 15px;

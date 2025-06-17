@@ -118,23 +118,62 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Download Orders Details                               
+                            <h6 class="mb-4">Download Orders Details
                             </h6>
                             <div class="mb-3">
                                 <div class="input-group mb-3">
                                     <input type="date" class="form-control" [(ngModel)]="report.from" />&nbsp;&nbsp;
                                     <input type="date" class="form-control" [(ngModel)]="report.to" />&nbsp;&nbsp;
                                     <select class="form-control1" [(ngModel)]="report.status">
-                                     <option value="ALL">ALL</option>
-                                     <option value="N">Pending</option>
-                                     <option value="Y">Completed</option>
+                                        <option value="ALL">ALL</option>
+                                        <option value="N">Pending</option>
+                                        <option value="Y">Completed</option>
                                     </select>
-                                      &nbsp;&nbsp;
-                                       <button class="btn btn-danger btn-xs" style="float: right;"
-                                    (click)="GetReport()">Download Excel
-                                 <img *ngIf="IsLoading" class="loading" src="./loading.gif" />
-                                </button>                                 
-                                </div>                             
+                                    &nbsp;&nbsp;
+                                    <button class="btn btn-danger btn-xs" style="float: right;"
+                                        (click)="GetReportShow()">Get
+                                        <img *ngIf="IsLoading" class="loading" src="./loading.gif" />
+                                    </button>
+                                    <button class="btn btn-danger btn-xs" style="float: right;"
+                                        (click)="GetReport()">Download Excel
+                                        <img *ngIf="IsLoading" class="loading" src="./loading.gif" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="height: 450px;overflow: auto;">
+                                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                    <thead>
+                                        <tr class="text-white">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Mg</th>
+                                            <th scope="col">Pack</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Discount</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let order of orderReport;let i=index">
+                                            <ng-container *ngIf="checkGroup(order.orderNo)">
+                                                <tr class="group">
+                                                    <th colspan="8">Order No : {{order.orderNo}},Date : {{order.orderDate|date:'dd MM yyyy'}}, Name : {{order.customerName}}, Contact : {{order.contactNo}}</th>
+                                                </tr>
+                                            </ng-container>
+                                            <tr class="text-white">
+                                                <td scope="col">{{i+1}}</td>
+                                                <td scope="col">{{order.productName}}</td>
+                                                <td scope="col">{{order.mg}}</td>
+                                                <td scope="col">{{order.pack}}</td>
+                                                <td scope="col">{{order.quantity}}</td>
+                                                <td scope="col">{{order.discount}}
+                                                <td scope="col">{{order.price}}
+                                                <td scope="col">{{order.status}}
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
