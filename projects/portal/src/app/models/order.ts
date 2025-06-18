@@ -6,6 +6,7 @@ export class Order {
     qty: Number;
     amount: Number;
     discount: Number;
+    shippingCharge: number;
     total: Number;
     orderItem: orderItem[];
     constructor() {
@@ -16,6 +17,7 @@ export class Order {
         this.qty = 1;
         this.amount = 0;
         this.discount = 0;
+        this.shippingCharge = 0;
         this.total = 0;
         this.orderItem = [];
     }

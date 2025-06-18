@@ -9,6 +9,7 @@ export interface IOrders {
     qty: Number,
     amount: Number,
     discount: Number,
+    shippingCharge: number,
     total: Number,
     orderItem: IorderItem[]
 }

@@ -41,7 +41,7 @@ export class IndexComponent implements OnInit,AfterViewInit {
   }
   GetProduct() {
     this._http.get(CONSTANT.API_URL + 'api/Product/GetProduct').subscribe((res: any) => {  
-      this.productList = res.splice(0,4);
+      this.productList = res;
     })
   }
    GetBanner() {

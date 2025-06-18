@@ -7,6 +7,7 @@ import { authGuard } from './guard/auth.guard';
 import { ProductComponent } from './component/product/product.component';
 import { EnquiryComponent } from './component/enquiry/enquiry.component';
 import { BannerComponent } from './component/banner/banner.component';
+import { ConfigComponent } from './component/config/config.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,7 +18,8 @@ export const routes: Routes = [
             { path: 'products', component: ProductComponent,canActivate:[authGuard] },                 
             { path: 'orders', component: OrdersComponent,canActivate:[authGuard] },
             { path: 'enquiry', component: EnquiryComponent,canActivate:[authGuard] },                 
-            { path: 'banner', component: BannerComponent,canActivate:[authGuard] }                     
+            { path: 'banner', component: BannerComponent,canActivate:[authGuard] },                  
+            { path: 'config', component: ConfigComponent,canActivate:[authGuard] }                     
         ]
     },
 ];

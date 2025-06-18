@@ -122,7 +122,7 @@
                                 <tr>
                                     <th>Delivery Charges</th>
                                     <th>:</th>
-                                    <th>$0</th>
+                                    <th>${{total()[0].shippingCharge}}</th>
                                 </tr>
                                 <tr>
                                     <th>Total Amount</th>
@@ -132,7 +132,7 @@
                                 <tr style="background: #ef5a8d;color: #fff;">
                                     <th>Grand Total</th>
                                     <th>:</th>
-                                    <th>${{total()[0].total}}</th>
+                                    <th>${{total()[0].total+total()[0].shippingCharge}}</th>
                                 </tr>
                             </table>                            
                         </div>

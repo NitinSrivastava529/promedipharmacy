@@ -24,16 +24,19 @@ export class CartComponent implements OnInit {
     qty: 0,
     discount: 0,
     amount: 0,
+    shippingCharge: 0,
     total: 0
   }];
   total = signal(this.totalValue);
   cartItem: orderItem[] = [];
+  shipping:number=0;
   _http = inject(HttpClient)
   _global = inject(GlobalService)
   _router = inject(Router);
   constructor() { }
   ngOnInit(): void {
     this.loadCart()
+    this.GetShipping()
   }
   ChangeQty(indx: number, type: string) {
     const item = this.cartItem[indx];
@@ -61,6 +64,11 @@ export class CartComponent implements OnInit {
     else
       this.total()[0].qty = 0
   }
+    GetShipping() {
+      this._http.get(CONSTANT.API_URL + 'api/Config/Get').subscribe((res: any) => {
+        this.total()[0].shippingCharge = res.shipping;
+      })
+    }
   calDiscount(qty:number,dis:number){
     return (qty<2)?0:(qty%2==0)?(dis*(qty/2)):((qty-1)/2)*dis;   
   }
@@ -93,6 +101,8 @@ export class CartComponent implements OnInit {
     this.loadCart()
   }
   AddOrder() {
+    this.order.shippingCharge=this.total()[0].shippingCharge;      
+    this.order.total=+this.order.total+this.total()[0].shippingCharge;         
     if (this.validation()) {
       this.IsLoading = true;
       this._http.post(CONSTANT.API_URL + 'api/Order/AddOrder', this.order, { headers: this._global.headers }).subscribe((res: any) => {
